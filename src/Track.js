@@ -1,13 +1,21 @@
 // Track.js
 import React from 'react';
 
-function Track({ trackData }) {
-  return (
+function Track({ trackData, isInPlaylist, onAddToPlaylist, onRemoveFromPlaylist }) {
+   return (
+    <>
     <div>
-      <h3>{trackData.title}</h3>
+      <h3>{trackData.name}</h3>
       <p>{trackData.artist}</p>
-      {/* Additional track information */}
+      <p>{trackData.album}</p>
     </div>
+     
+     {isInPlaylist ? (
+       <button onClick={() => onRemoveFromPlaylist(trackData)}>-</button>
+     ) : (
+       <button onClick={() => onAddToPlaylist(trackData)}>+</button>
+     )}
+    </>
   );
 }
 
