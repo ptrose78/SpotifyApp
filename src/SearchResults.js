@@ -1,6 +1,7 @@
 // SearchResults.js
 import React, { useState } from 'react';
 import Tracklist from './Tracklist';
+import Playlist from './Playlist';
 
 
 function SearchResults({ }) {
@@ -26,19 +27,22 @@ function SearchResults({ }) {
         }
       ];  
 
-  const [playlist, setPlaylist] = useState([]);
+  const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const handleAddToPlaylist = (track) => {
-    setPlaylist([...playlist, track]);
+    setPlaylistTracks([...playlistTracks, track]);
   };
-  const handleRemoveFromPlaylist = (track) => {
-    setPlaylist([...playlist, track]);
+  
+  const handleRemoveFromPlaylist = (track) => {    
+    const updatedTracks = playlistTracks.filter((playlistTrack) => playlistTrack.id !== track.id);
+    setPlaylistTracks(updatedTracks);
   };
 
   return (
     <div>
       <h2>Search Results</h2>
       <Tracklist tracks={searchResults} onAddToPlaylist={handleAddToPlaylist} isInPlaylist={false} />
+      <Playlist playlistTracks={playlistTracks} onRemoveFromPlaylist={handleRemoveFromPlaylist} isInPlaylist={true}/>
     </div>
   );
 }
