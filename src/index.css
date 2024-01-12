@@ -11,3 +11,41 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Container for the tracklist and playlist */
+.container {
+  display: flex;
+  background-color: #282828; /* Spotify's dark background color */
+  color: #fff; /* White text color */
+}
+
+/* Styling for the tracklist */
+.tracklist {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Styling for individual tracks in the tracklist */
+.track {
+  margin-bottom: 15px;
+}
+
+/* Styling for the playlist */
+.playlist {
+  flex: 1;
+  padding: 20px;
+  background-color: #333; /* Darker background color for the playlist */
+}
+
+/* Styling for individual tracks in the playlist */
+.track {
+  margin-bottom: 15px;
+}
+
+button {
+  background-color: #10682f; 
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
