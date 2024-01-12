@@ -5,7 +5,7 @@ function Track({ trackData, onAddToPlaylist, onRemoveFromPlaylist, isInPlaylist 
 
     return (
     <>
-    <div>
+    <div className='track'>
       <h3>{trackData.name}</h3>
       <p>{trackData.artist}</p>
       <p>{trackData.album}</p>
