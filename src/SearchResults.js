@@ -1,36 +1,37 @@
 // SearchResults.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Tracklist from './Tracklist';
 import Playlist from './Playlist';
-
+import SearchBar from './SearchBar';
+import Spotify from './Spotify';
 
 function SearchResults({ }) {
 
-    const searchResults = [
-        {
-          id: 1,
-          name: 'Song 1',
-          artist: 'Artist A',
-          album: 'Album X',
-          uri: 'spotify:track:1'
-        },
-        {
-          id: 2,
-          name: 'Song 2',
-          artist: 'Artist B',
-          album: 'Album Y',
-          uri: 'spotify:track:2'
-        },
-        {
-          id: 3,
-          name: 'Song 3',
-          artist: 'Artist A',
-          album: 'Album Z',
-          uri: 'spotify:track:3'
-        }
-      ];  
-
   const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [accessToken, setAccessToken] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    // Call the method to get the access token
+    const token = Spotify.getAccessToken;
+    console.log(token)
+    if (token) {
+      setAccessToken(token);
+    }
+  }, []);
+
+  const handleSearch = (query) => {
+    console.log('Search query:', query);
+    // Call the method to search for tracks
+    console.log('Spotify module:', Spotify);
+    Spotify.searchTracks(query, accessToken)
+      .then((results) => {;
+        console.log('Search results:', results);
+        setSearchResults(results);
+      })
+      .catch(error => console.error('Error:', error));
+  };
+
 
   const handleAddToPlaylist = (track) => {
     setPlaylistTracks([...playlistTracks, track]);
@@ -48,6 +49,7 @@ function SearchResults({ }) {
   return (
     <>
       <h2>Search Results</h2>
+      <SearchBar onSearch={handleSearch} />
       <div className='container'>
       <Tracklist tracks={searchResults} onAddToPlaylist={handleAddToPlaylist} isInPlaylist={false} />
       <Playlist playlistTracks={playlistTracks} onRemoveFromPlaylist={handleRemoveFromPlaylist} onSavePlaylist={handleSavePlaylist} isInPlaylist={true}/>
