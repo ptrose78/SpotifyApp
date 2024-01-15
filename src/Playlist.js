@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Track from './Track'; 
 
 function Playlist({playlistTracks, onRemoveFromPlaylist, onSavePlaylist, isInPlaylist}) {
-  
+  const [playlistName, setPlaylistName] = useState('');
+
   const savePlaylist = () => {
     const trackURIs = playlistTracks.map(track => track.uri);
     onSavePlaylist(trackURIs);
@@ -10,13 +11,15 @@ function Playlist({playlistTracks, onRemoveFromPlaylist, onSavePlaylist, isInPla
 
   return (
     <div className='playlist'>
-    <div >
-      <h3>Playlist</h3>
+      <form onSubmit={savePlaylist}>
+      <input type="text" onChange={(e)=>setPlaylistName(e.target.value)} />
+      <div>
       {playlistTracks.map((track) => (
         <Track key={track.id} trackData={track} onRemoveFromPlaylist={onRemoveFromPlaylist} isInPlaylist={isInPlaylist}/>
       ))}
-    </div>
-    <button onClick={savePlaylist}>Save Playlist</button>
+      </div>
+      <button type="submit">Save Playlist</button>
+      </form>
     </div>
   );
 }
