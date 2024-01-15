@@ -7,9 +7,8 @@ function Track({ trackData, onAddToPlaylist, onRemoveFromPlaylist, isInPlaylist 
     <>
     <div className='track'>
       <h3>{trackData.name}</h3>
-      <p>{trackData.artist}</p>
-      <p>{trackData.album}</p>
-    
+      <h3>{trackData.album.name}</h3>
+      
      { isInPlaylist ? (
        <button onClick={() => {console.log('Removing from playlist:'); onRemoveFromPlaylist(trackData)}}>-</button>
      ) : (
