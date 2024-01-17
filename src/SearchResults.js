@@ -13,20 +13,16 @@ function SearchResults({ }) {
 
   useEffect(() => {
     // Call the method to get the access token
-    const token = Spotify.getAccessToken;
-    console.log(token)
+    const token = Spotify.getAccessToken();
     if (token) {
       setAccessToken(token);
     }
   }, []);
 
   const handleSearch = (query) => {
-    console.log('Search query:', query);
     // Call the method to search for tracks
-    console.log('Spotify module:', Spotify);
     Spotify.searchTracks(query, accessToken)
       .then((results) => {;
-        console.log('Search results:', results);
         setSearchResults(results);
       })
       .catch(error => console.error('Error:', error));
