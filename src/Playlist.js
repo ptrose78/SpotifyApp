@@ -14,13 +14,21 @@ function Playlist({playlistTracks, onRemoveFromPlaylist, onSavePlaylist, isInPla
 
   return (
     <div className='playlist'>
-      <h3 className='playlistName'>Playlist Name</h3>
-      <input type="text" onChange={(e)=>setPlaylistName(e.target.value)} />
+      <h3 className='playlistHeading'>Playlist</h3>
+      <div className='listColumns'>
+        <div class="column">
+          <h3 className='song'>Song</h3>
+        </div>
+        <div class="column">
+          <h3 className='album'>Album</h3>
+        </div>
+      </div>
       <div>
       {playlistTracks.map((track) => (
         <Track key={track.id} trackData={track} onRemoveFromPlaylist={onRemoveFromPlaylist} isInPlaylist={isInPlaylist}/>
       ))}
       </div>
+      <input className='playlistInput' placeholder= 'Playlist Name' type="text" onChange={(e)=>setPlaylistName(e.target.value)} />
       <button className='spotifyButton' onClick={handleSaveToSpotify}>Save To Spotify</button>
     </div>
   );

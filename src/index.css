@@ -12,8 +12,9 @@ code {
     monospace;
 }
 
-.searchResults {
-  margin-bottom: 1px;
+/* Styling for the app's name */
+.appName {
+  color: rgba(229, 229, 248, 0.699);
 }
 
 /* Container for the tracklist and playlist */
@@ -24,7 +25,7 @@ code {
   margin-top: 20px;
 }
 
-/* Styling for the tracklist */
+/* Styling for the tracklist container */
 .tracklist {
   flex: 1;
   padding: 20px;
@@ -33,28 +34,89 @@ code {
 
 /* Styling for individual tracks in the tracklist */
 .track {
+  display: flex;
   margin-bottom: 15px;
+  align-items: center;
 }
 
-/* Styling for the playlist */
+.column {
+  flex: 1; 
+}
+
+.song, .album {
+  margin-top: 5px;
+  color: rgba(246, 247, 245, 0.678);
+  font-size: 20px;
+}
+
+/* Styling for the playlist container*/
 .playlist {
   flex: 1;
   padding: 20px;
   background-color: #333; 
 }
 
-.playlistName {
-  margin-bottom: 5px;
+/* Styling for the tracklist and playlist's headings */
+.playlistHeading, .tracklistHeading {
+  width: 95%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px auto;
+  display: block;
 }
 
+/* Styling for the tracklist and playlist's name and album headings */
+.listColumns {
+  display: flex;
+  color: rgba(246, 247, 245, 0.678);
+}
+
+.listColumns .song, .listColumns .album  {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px auto;
+  display: block;
+  margin: 0px;
+}
+
+/* Styling for the form and input fields */
+form {
+  width: 20%;
+}
+
+input {
+    width: 50%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 8px;
+    margin-right: 5px;
+}
+input::placeholder {
+  font-size: 15px;
+  font-weight: 535;
+}
+
+/* Styling for buttons */
 button {
   background-color: #10682f; 
   color: #fff;
   border: none;
-  padding: 10px 15px;
+  padding: 12px 15px;
   cursor: pointer;
   margin-top: 20px;
+  border-radius: 5px;
+  font-size: 16px;
 }
+
+button:hover {
+  background-color: #168f4a; 
+}
+
 button:active {
   background-color: #4CAF50; 
   color: white; 
@@ -62,7 +124,13 @@ button:active {
 
 .searchButton {
   margin-top: 5px;
+  margin-left: 5px;
 }
+
 .spotifyButton {
   margin-top: 35px;
+}
+
+.trackButtons {
+  height: 45px;
 }
