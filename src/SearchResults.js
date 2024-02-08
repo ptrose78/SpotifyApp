@@ -44,6 +44,7 @@ function SearchResults({ }) {
 
   return (
     <>
+    <h1 className='appName'>Playlist Pro</h1>
       <SearchBar onSearch={handleSearch} />
       <div className='container'>
       <Tracklist tracks={searchResults} onAddToPlaylist={handleAddToPlaylist} isInPlaylist={false} />

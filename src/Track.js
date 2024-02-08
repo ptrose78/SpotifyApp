@@ -6,15 +6,19 @@ function Track({ trackData, onAddToPlaylist, onRemoveFromPlaylist, isInPlaylist 
     return (
     <>
     <div className='track'>
-      <h3>{trackData.name}</h3>
-      <h3>{trackData.album.name}</h3>
-      
+      <div class="column">
+        <h3 className='song'>{trackData.name}</h3>
+      </div>
+      <div class="column">
+        <h3 className='album'>{trackData.album.name}</h3>
+      </div>
+
      { isInPlaylist ? (
-       <button onClick={() => {console.log('Removing from playlist:'); onRemoveFromPlaylist(trackData)}}>-</button>
+       <button className='trackButtons' onClick={() => {console.log('Removing from playlist:'); onRemoveFromPlaylist(trackData)}}>-</button>
      ) : (
-       <button onClick={() => {console.log('Adding to playlist:'); onAddToPlaylist(trackData)}}>+</button>
+       <button className='trackButtons' onClick={() => {console.log('Adding to playlist:'); onAddToPlaylist(trackData)}}>+</button>
      )}
-     </div>
+    </div>
     </>
   );
 }
